@@ -1,8 +1,8 @@
 # Unpwn
 
-A gem to help you make sure that passwords are good, and not likely to be guessed or hacked.
+A gem to help you make sure that passwords are good, and not likely to be guessed or hacked, as suggested by [NIST SP-800-63B](https://pages.nist.gov/800-63-3/).
 
-Checks passwords locally against the top one million passwords, as provided by the [nbp](https://cry.github.io/nbp/) project. Also uses the [haveibeenpwned](https://haveibeenpwned.com) API to check proposed passwords against the largest corpus of publicly dumped passwords in the world.
+Unpwn checks passwords locally against the top one million passwords, as provided by the [nbp](https://cry.github.io/nbp/) project. Then, it uses the [haveibeenpwned](https://haveibeenpwned.com) API to check proposed passwords against the largest corpus of publicly dumped passwords in the world.
 
 Inspired by @codahale's [passpol](https://github.com/codahale/passpol), and uses prior work from [nbp](https://cry.github.io/nbp/) and [devise-pwned\_password](https://github.com/michaelbanfield/devise-pwned_password).
 
@@ -18,7 +18,9 @@ gem "unpwn", "~> 1.0"
 
 ```ruby
 require "unpwn"
+# Default length requirement is 8 characters minimum, no maximum
 Unpwn.acceptable?("abc123") # => false
+# Min and max can be set manually, but only as low as 8 and 64 respectively.
 Unpwn.new(min: 10, max: 64).acceptable?("visit raven follow disk") # => true
 ```
 
