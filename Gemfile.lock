@@ -1,0 +1,43 @@
+PATH
+  remote: .
+  specs:
+    unpwn (0.1.0)
+      bloomer (~> 1.0)
+      pwned (~> 1.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bitarray (1.2.0)
+    bloomer (1.0.0)
+      bitarray
+      msgpack
+    diff-lcs (1.3)
+    msgpack (1.2.4)
+    pwned (1.2.1)
+    rake (10.5.0)
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (>= 1)
+  rake (~> 10.0)
+  rspec (~> 3.0)
+  unpwn!
+
+BUNDLED WITH
+   1.16.2
