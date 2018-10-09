@@ -1,28 +1,36 @@
 # Unpwn
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/unpwn`. To experiment with that code, run `bin/console` for an interactive prompt.
+A gem to help you make sure that passwords are good, and not likely to be guessed or hacked.
 
-TODO: Delete this and the text above, and describe your gem
+Checks passwords locally against the top one million passwords, as provided by the [nbp](https://cry.github.io/nbp/) project. Also uses the [haveibeenpwned](https://haveibeenpwned.com) API to check proposed passwords against the largest corpus of publicly dumped passwords in the world.
+
+Inspired by @codahale's [passpol](https://github.com/codahale/passpol), and uses prior work from [nbp](https://cry.github.io/nbp/) and [devise-pwned\_password](https://github.com/michaelbanfield/devise-pwned_password).
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add `unpwn` to your `Gemfile`:
 
 ```ruby
-gem 'unpwn'
+gem "unpwn", "~> 1.0"
 ```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install unpwn
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require "unpwn"
+Unpwn.acceptable?("abc123") # => false
+Unpwn.new(min: 10, max: 64).acceptable?("visit raven follow disk") # => true
+```
+
+### With Rails + Devise
+
+```ruby
+class User < ApplicationRecord
+  devise :database_authenticatable, :unpwnable
+end
+```
+
+Users trying to set a password that has already been used and leaked in a public breach will see a validation error, informing them that their password has appeared in a public data breach and should not be used.
 
 ## Development
 
