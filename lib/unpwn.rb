@@ -1,5 +1,6 @@
 require "unpwn/version"
 
+require "bloomer"
 require "bloomer/msgpackable"
 require "pwned"
 
