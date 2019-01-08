@@ -24,16 +24,6 @@ Unpwn.acceptable?("abc123") # => false
 Unpwn.new(min: 10, max: 64).acceptable?("visit raven follow disk") # => true
 ```
 
-### With Rails + Devise
-
-```ruby
-class User < ApplicationRecord
-  devise :database_authenticatable, :unpwnable
-end
-```
-
-Users trying to set a password that has already been used and leaked in a public breach will see a validation error, informing them that their password has appeared in a public data breach and should not be used.
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
