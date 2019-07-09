@@ -10,7 +10,7 @@ task build: %w[lib/top1000000.msgpack]
 file "lib/top1000000.msgpack" => %w[src/top1000000] do
   ruby %{-rbloomer -rbloomer/msgpackable -e '
     b=Bloomer.new(1_000_000, 0.001)
-    File.read("src/top1000000").split("\n").each{|p| b.add(p) }
+    File.foreach("src/top1000000"){|p| b.add(p.chomp) }
     File.write("lib/top1000000.msgpack", b.to_msgpack)
   '}
 end
