@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    unpwn (0.1.0)
+    unpwn (0.2.0)
       bloomer (~> 1.0)
       pwned (~> 1.2)
 
@@ -26,7 +26,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
-    msgpack (1.2.4)
+    msgpack (1.3.1)
     public_suffix (3.0.3)
     pwned (1.2.1)
     rake (10.5.0)
