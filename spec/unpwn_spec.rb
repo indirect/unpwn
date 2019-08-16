@@ -29,13 +29,18 @@ RSpec.describe Unpwn do
     end
 
     it "is false when in the pwned API" do
-      expect(Pwned).to receive(:pwned?).with("merge mad basic brake").and_return(true)
+      expect(Pwned).to receive(:pwned?).with("merge mad basic brake", {}).and_return(true)
       expect(Unpwn.new.acceptable?("merge mad basic brake")).to be false
     end
 
     it "is true when not in the pwned API" do
-      expect(Pwned).to receive(:pwned?).with("merge mad basic brake").and_return(false)
+      expect(Pwned).to receive(:pwned?).with("merge mad basic brake", {}).and_return(false)
       expect(Unpwn.new.acceptable?("merge mad basic brake")).to be true
+    end
+
+    it "passes request options to pwned" do
+      expect(Pwned).to receive(:pwned?).with("merge mad basic brake", { read_timeout: 5 }).and_return(false)
+      Unpwn.new(request_options: { read_timeout: 5 }).acceptable?("merge mad basic brake")
     end
   end
 end
