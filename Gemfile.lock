@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    unpwn (0.2.0)
+    unpwn (0.3.0)
       bloomer (~> 1.0)
       pwned (~> 1.2)
 
