@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "bloomer", "~> 1.0"
-  spec.add_dependency "pwned", "~> 1.2"
+  spec.add_dependency "pwned", "~> 2.0"
 
   spec.add_development_dependency "bundler", ">= 1"
   spec.add_development_dependency "http", "~> 4.0"
