@@ -35,4 +35,9 @@ class Unpwn
     end
   end
 
+  def inspect
+    "<UnPwn bloomed=#{@bloom ? 'yes' : 'no'}>"
+  end
+
+  alias :to_s :inspect
 end
