@@ -43,4 +43,34 @@ RSpec.describe Unpwn do
       Unpwn.new(request_options: { read_timeout: 5 }).acceptable?("merge mad basic brake")
     end
   end
+  context "inspection" do
+    context "not bloomed" do
+      let(:unpwn) do
+        described_class.new.tap do |object|
+          object.acceptable?('1234')
+        end
+      end
+      let(:inspection) { '<UnPwn bloomed=no>' }
+      it do
+        expect(unpwn.to_s).to eq(inspection)
+      end
+      it do
+        expect(unpwn.inspect).to eq(inspection)
+      end
+    end
+    context "bloomed" do
+      let(:unpwn) do
+        described_class.new.tap do |object|
+          object.acceptable?('1234567890')
+        end
+      end
+      let(:inspection) { '<UnPwn bloomed=yes>' }
+      it do
+        expect(unpwn.inspect).to eq(inspection)
+      end
+      it do
+        expect(unpwn.to_s).to eq(inspection)
+      end
+    end
+  end
 end
