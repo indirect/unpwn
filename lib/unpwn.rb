@@ -6,6 +6,11 @@ require "pwned"
 
 # Unpwn.pwned? tells you if a password should be rejected.
 class Unpwn
+  class << self
+    # Set `offline` to true to disable requests to the haveibeenpwned.com API
+    attr_accessor :offline
+  end
+
   attr_reader :min, :max, :request_options
 
   def initialize(min: 8, max: nil, request_options: nil)
@@ -25,7 +30,14 @@ class Unpwn
   end
 
   def pwned?(password)
-    bloom.include?(password) || Pwned.pwned?(password, request_options)
+    pwned = bloom.include?(password)
+
+    unless self.class.offline
+      require "pwned"
+      pwned ||= Pwned.pwned?(password, request_options)
+    end
+
+    pwned
   end
 
   def bloom
