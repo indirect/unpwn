@@ -65,3 +65,7 @@ class Unpwn
 
   alias :to_s :inspect
 end
+
+if defined?(ActiveModel) || defined?(Rails)
+  autoload :UnpwnedValidator, "unpwned_validator"
+end
