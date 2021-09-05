@@ -1,9 +1,5 @@
 require "unpwn/version"
 
-require "bloomer"
-require "bloomer/msgpackable"
-require "pwned"
-
 # Unpwn.pwned? tells you if a password should be rejected.
 class Unpwn
   class << self
@@ -42,6 +38,8 @@ class Unpwn
 
   def bloom
     @bloom ||= begin
+      require "bloomer"
+      require "bloomer/msgpackable"
       top = File.read File.expand_path("top1000000.msgpack", __dir__)
       Bloomer.from_msgpack(top)
     end
