@@ -8,13 +8,17 @@ Inspired by @codahale's [passpol](https://github.com/codahale/passpol), and uses
 
 ## Installation
 
-Add `unpwn` to your `Gemfile`:
+Run `bundle add unpwn` to add the gem to your `Gemfile`.
+
+## Usage (Rails)
 
 ```ruby
-gem "unpwn", "~> 1.0"
+class User
+  validates :password, unpwned: true, if: -> { Rails.env.production? }
+end
 ```
 
-## Usage
+## Usage (Ruby)
 
 ```ruby
 require "unpwn"
