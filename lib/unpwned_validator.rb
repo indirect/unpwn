@@ -17,6 +17,8 @@ require "unpwn"
 #   end
 class UnpwnedValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
+    return if value.nil?
+
     unpwn = Unpwn.new(**options.slice(:min, :max, :request_options))
 
     if unpwn.min && value.length < unpwn.min
